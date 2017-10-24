@@ -4,6 +4,7 @@
   "description": "app that will add burgeers user wants to eat on onside of page with a devour button when devour button is pressed it will move the burger to the right side",
   "main": "server.js",
   "scripts": {
+    "start": "mysql -u root -p < schema.sql && seeds.sql",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
