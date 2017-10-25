@@ -1,6 +1,6 @@
 var mysql = require('mysql');
 
-vcar connection = mysql.createConncetion({
+var connection = mysql.createConncetion({
   port: 3306,
   host: 'localhost',
   user: 'root',
