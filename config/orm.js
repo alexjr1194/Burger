@@ -1,12 +1,13 @@
 var connection = require('./connections.js');
 
 function printQuestionMarks (num) {
+  console.log(num);
   var arr = [];
 
-  for (var i = 0; i < num.length; i++) {
+  for (var i = 0; i < num; i++) {
     arr.push('?');
   }
-
+  console.log('=======', arr, arr.toString());
   return arr.toString();
 }
 
@@ -34,13 +35,15 @@ var orm = {
     });
   },
   insertOne: function (table, cols, vals, cb) {
-    var queryString = 'SELECT INTO ' + table + ';';
+    console.log(table, cols, vals[0].length + 'please work -------------------');
+    console.log(printQuestionMarks(vals[0].length));
+    var queryString = 'INSERT INTO ' + table;
     queryString += ' (';
     queryString += cols.toString();
     queryString += ') ';
-    queryString += 'VALUE (';
+    queryString += 'VALUES (';
     queryString += printQuestionMarks(vals.length);
-    queryString += ')';
+    queryString += ') ';
 
     console.log(queryString);
 
@@ -50,10 +53,11 @@ var orm = {
     });
   },
   updateOne: function (table, objColVal, condition, cb) {
+    console.log('======',objColVal)
     var queryString = 'UPDATE ' + table;
     queryString += 'SET ';
     queryString += objToSql(objColVal);
-    queryString += 'WHERE ';
+    queryString += ' WHERE ';
     queryString += condition;
 
     console.log(queryString);

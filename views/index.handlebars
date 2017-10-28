@@ -1,0 +1,47 @@
+<h1>Burgers</h1>
+
+<main>
+  <div class="container">
+    <div class="row">
+
+      <div class="col-s-6">
+        <h2>Burgers Not Eaten</h2>
+
+        <ul>
+          {{#each burgers}}
+          {{#unless devoured}}
+          <div>
+            <form id="eat" action="/api/burgers/{{this.id}}?_method=put" method="post">
+              <button type="submit" value="true" class="burgerAvailable">{{this.burger_name}}</button>
+            </form>
+          </div>
+          {{/unless}}
+          {{/each}}
+        </ul>
+      </div>
+
+      <div class="col-s-6">
+        <h2>Burgers Eaten</h2>
+        {{#each burgers}}
+        {{#if this.devoured}}
+        <div class="burgerEaten">
+          <div>
+            {{this.burger_name}}
+          </div>
+        </div>
+        {{/if}}
+        {{/each}}
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-s-12">
+        <form action="/api/burgers" method="post" class="form">
+          <input type="text" id="name" name="burger_name" placeholder="Uber Delicious Burger">
+          <button type="submit" class="addBurgerButton">Add The Burger</button>
+        </form>
+      </div>
+    </div>
+
+  </div>
+</main>

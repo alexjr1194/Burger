@@ -20,6 +20,6 @@ app.set('view engine', 'handlebars');
 
 var routes = require('./controller/burger_controller.js');
 
-app.set('/', routes);
+app.use('/', routes);
 
 app.listen(port);
